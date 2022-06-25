@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "/Users/manoj/Documents/Github/server-client-.net/Client/Client.csproj": {}
+    "/Users/manoj/Documents/Github/server-client-.net/Client-User-Integer-input/Client.csproj": {}
   },
   "projects": {
-    "/Users/manoj/Documents/Github/server-client-.net/Client/Client.csproj": {
+    "/Users/manoj/Documents/Github/server-client-.net/Client-User-Integer-input/Client.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "/Users/manoj/Documents/Github/server-client-.net/Client/Client.csproj",
+        "projectUniqueName": "/Users/manoj/Documents/Github/server-client-.net/Client-User-Integer-input/Client.csproj",
         "projectName": "Client",
-        "projectPath": "/Users/manoj/Documents/Github/server-client-.net/Client/Client.csproj",
+        "projectPath": "/Users/manoj/Documents/Github/server-client-.net/Client-User-Integer-input/Client.csproj",
         "packagesPath": "/Users/manoj/.nuget/packages/",
-        "outputPath": "/Users/manoj/Documents/Github/server-client-.net/Client/obj/",
+        "outputPath": "/Users/manoj/Documents/Github/server-client-.net/Client-User-Integer-input/obj/",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "/Users/manoj/.nuget/NuGet/NuGet.Config"

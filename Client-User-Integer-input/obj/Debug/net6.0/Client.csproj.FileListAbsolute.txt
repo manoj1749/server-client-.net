@@ -32,3 +32,11 @@
 /Users/manoj/Documents/Github/server-client-.net/Client-User-Input/obj/Debug/net6.0/Client.pdb
 /Users/manoj/Documents/Github/server-client-.net/Client-User-Input/obj/Debug/net6.0/Client.genruntimeconfig.cache
 /Users/manoj/Documents/Github/server-client-.net/Client-User-Input/obj/Debug/net6.0/ref/Client.dll
+/Users/manoj/Documents/Github/server-client-.net/Client-User-Integer-input/obj/Debug/net6.0/Client.csproj.AssemblyReference.cache
+/Users/manoj/Documents/Github/server-client-.net/Client-User-Integer-input/obj/Debug/net6.0/Client.GeneratedMSBuildEditorConfig.editorconfig
+/Users/manoj/Documents/Github/server-client-.net/Client-User-Integer-input/obj/Debug/net6.0/Client.AssemblyInfoInputs.cache
+/Users/manoj/Documents/Github/server-client-.net/Client-User-Integer-input/obj/Debug/net6.0/Client.AssemblyInfo.cs
+/Users/manoj/Documents/Github/server-client-.net/Client-User-Integer-input/obj/Debug/net6.0/Client.csproj.CoreCompileInputs.cache
+/Users/manoj/Documents/Github/server-client-.net/Client-User-Integer-input/obj/Debug/net6.0/Client.dll
+/Users/manoj/Documents/Github/server-client-.net/Client-User-Integer-input/obj/Debug/net6.0/refint/Client.dll
+/Users/manoj/Documents/Github/server-client-.net/Client-User-Integer-input/obj/Debug/net6.0/Client.pdb

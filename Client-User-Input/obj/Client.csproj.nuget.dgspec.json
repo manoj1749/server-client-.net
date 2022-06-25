@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "/Users/manoj/Client/Client.csproj": {}
+    "/Users/manoj/Documents/Github/server-client-.net/Client-User-Input/Client.csproj": {}
   },
   "projects": {
-    "/Users/manoj/Client/Client.csproj": {
+    "/Users/manoj/Documents/Github/server-client-.net/Client-User-Input/Client.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "/Users/manoj/Client/Client.csproj",
+        "projectUniqueName": "/Users/manoj/Documents/Github/server-client-.net/Client-User-Input/Client.csproj",
         "projectName": "Client",
-        "projectPath": "/Users/manoj/Client/Client.csproj",
+        "projectPath": "/Users/manoj/Documents/Github/server-client-.net/Client-User-Input/Client.csproj",
         "packagesPath": "/Users/manoj/.nuget/packages/",
-        "outputPath": "/Users/manoj/Client/obj/",
+        "outputPath": "/Users/manoj/Documents/Github/server-client-.net/Client-User-Input/obj/",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "/Users/manoj/.nuget/NuGet/NuGet.Config"

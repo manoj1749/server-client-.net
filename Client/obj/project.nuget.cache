@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "VlS+D2GU+dO13dmbTdd1vnPeIOqwOQXkx8U+APDsq/s0zmQuFi0UmGLo1ageFXt732AIQEy/N8Lsy35VHmKd3Q==",
+  "dgSpecHash": "deSI23sOMErjYXEaTtkp+F8OFsuHa60MAQKdH8v1jNk8PBvnqHV3/yrZTmqrhZzHex05oWp+lZH0Nnuxp78SKg==",
   "success": true,
-  "projectFilePath": "/Users/manoj/Client/Client.csproj",
+  "projectFilePath": "/Users/manoj/Documents/Github/server-client-.net/Client/Client.csproj",
   "expectedPackageFiles": [
     "/Users/manoj/.nuget/packages/newtonsoft.json/13.0.1/newtonsoft.json.13.0.1.nupkg.sha512"
   ],
