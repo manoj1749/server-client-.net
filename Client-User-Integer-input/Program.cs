@@ -33,10 +33,16 @@ public class SynchronousSocketClient
                     sender.RemoteEndPoint.ToString());
 
                 // Encode the data string into a byte array.
-                Console.WriteLine("Enter data:");
+                Console.WriteLine("Enter The Number You Want To Send : ");
 
                 // Create a string variable and get user input from the keyboard and store it in the variable
                 string userInput = Console.ReadLine();
+                bool isNumeric = int.TryParse(userInput, out _);
+                //Console.WriteLine(isNumeric);
+                if (isNumeric)
+                {
+                int dataInt = Int32.Parse(userInput);
+                Console.WriteLine("The Number You Entered Is : "+userInput);
                 byte[] msg1 = Encoding.ASCII.GetBytes(userInput);
                 // Send the data through the socket.  
                 byte[] msg2 = Encoding.ASCII.GetBytes("<EOF>");
@@ -44,12 +50,20 @@ public class SynchronousSocketClient
                 int bytesSent2 = sender.Send(msg2);
                 // Receive the response from the remote device.  
                 int bytesRec = sender.Receive(bytes);
-                Console.WriteLine("Echoed test = {0}",
+                Console.WriteLine("The Square root of "+userInput+" : {0}",
                     Encoding.ASCII.GetString(bytes, 0, bytesRec));
                 // Release the socket.  
                 sender.Shutdown(SocketShutdown.Both);
                 sender.Close();
-
+                }
+                else
+                {
+                    Console.WriteLine("Only Numebrs Are Accepted");
+                    byte[] msg = Encoding.ASCII.GetBytes("Wrong Input Given<EOF>");
+                    int bytesSent = sender.Send(msg);
+                    sender.Shutdown(SocketShutdown.Both);
+                    sender.Close();
+                }
             }
             catch (ArgumentNullException ane)
             {

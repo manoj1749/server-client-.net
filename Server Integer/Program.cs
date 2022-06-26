@@ -46,6 +46,9 @@ public class SynchronousSocketListener {
                 }  
                 //Console.WriteLine("{0}", data); 
                 string dataStr = data.Substring(0,data.Length-5);
+                bool isNumeric = int.TryParse(dataStr, out _);
+                if (isNumeric)
+                {
                 int dataInt = Int32.Parse(dataStr);
                 int dataf = dataInt*dataInt;
                 // Show the data on the console.  
@@ -55,6 +58,15 @@ public class SynchronousSocketListener {
                 handler.Send(msg);  
                 handler.Shutdown(SocketShutdown.Both);  
                 handler.Close();  
+                }
+                else
+                {
+                    Console.WriteLine(dataStr);
+                    byte[] msg = Encoding.ASCII.GetBytes(dataStr); 
+                    handler.Send(msg);
+                    handler.Shutdown(SocketShutdown.Both);
+                    handler.Close();  
+                }
             }  
   
         } catch (Exception e) {  
