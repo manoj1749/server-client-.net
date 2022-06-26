@@ -39,7 +39,7 @@ public class SynchronousSocketClient
                 string userInput = Console.ReadLine();
                 byte[] msg1 = Encoding.ASCII.GetBytes(userInput);
                 // Send the data through the socket.  
-                byte[] msg2 = Encoding.ASCII.GetBytes(" <EOF>");
+                byte[] msg2 = Encoding.ASCII.GetBytes("<EOF>");
                 int bytesSent1 = sender.Send(msg1);
                 int bytesSent2 = sender.Send(msg2);
                 // Receive the response from the remote device.  

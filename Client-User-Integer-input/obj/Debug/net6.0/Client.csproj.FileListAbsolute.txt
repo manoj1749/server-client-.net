@@ -40,3 +40,12 @@
 /Users/manoj/Documents/Github/server-client-.net/Client-User-Integer-input/obj/Debug/net6.0/Client.dll
 /Users/manoj/Documents/Github/server-client-.net/Client-User-Integer-input/obj/Debug/net6.0/refint/Client.dll
 /Users/manoj/Documents/Github/server-client-.net/Client-User-Integer-input/obj/Debug/net6.0/Client.pdb
+/Users/manoj/Documents/Github/server-client-.net/Client-User-Integer-input/bin/Debug/net6.0/Client
+/Users/manoj/Documents/Github/server-client-.net/Client-User-Integer-input/bin/Debug/net6.0/Client.deps.json
+/Users/manoj/Documents/Github/server-client-.net/Client-User-Integer-input/bin/Debug/net6.0/Client.runtimeconfig.json
+/Users/manoj/Documents/Github/server-client-.net/Client-User-Integer-input/bin/Debug/net6.0/Client.dll
+/Users/manoj/Documents/Github/server-client-.net/Client-User-Integer-input/bin/Debug/net6.0/Client.pdb
+/Users/manoj/Documents/Github/server-client-.net/Client-User-Integer-input/bin/Debug/net6.0/Newtonsoft.Json.dll
+/Users/manoj/Documents/Github/server-client-.net/Client-User-Integer-input/obj/Debug/net6.0/Client.csproj.CopyComplete
+/Users/manoj/Documents/Github/server-client-.net/Client-User-Integer-input/obj/Debug/net6.0/Client.genruntimeconfig.cache
+/Users/manoj/Documents/Github/server-client-.net/Client-User-Integer-input/obj/Debug/net6.0/ref/Client.dll
