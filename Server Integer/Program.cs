@@ -38,7 +38,7 @@ public class SynchronousSocketListener {
   
                 // An incoming connection needs to be processed.  
                 while (true) {  
-                    int bytesRec = handler.Receive(bytes);  
+                    int bytesRec = handler.Receive(bytes); 
                     data += Encoding.ASCII.GetString(bytes,0,bytesRec);  
                     if (data.IndexOf("<EOF>") > -1) {  
                         break;  
@@ -49,20 +49,54 @@ public class SynchronousSocketListener {
                 bool isNumeric = int.TryParse(dataStr, out _);
                 if (isNumeric)
                 {
+                
+                string errorCode="";
                 int dataInt = Int32.Parse(dataStr);
-                int dataf = dataInt*dataInt;
+                Console.WriteLine(dataInt);
+                if (dataInt>0 & dataInt<13)
+                {
+                    errorCode="{Code:0 Code Compiled Successfully}";
+                }
+                else
+                {
+                    errorCode="{Code:1 Input Is Out Of Range}";
+                }
+                int dataFact = 1,i;
+                for(i =1;i<=dataInt;i++)
+                {
+                    dataFact=dataFact*i;
+                    Console.WriteLine(dataFact);
+                    //dataInt=dataInt-1;
+                }
+                int n1=0,n2=1,n3,j,dataf;
+                dataf=n1+n2;
+                //Console.WriteLine(0);
+                //Console.Write(n1+" "+n2+" ");
+                for(j=2;n2<dataFact;j++)
+                {
+                    n3=n1+n2;
+                    //Console.WriteLine(n1+" "+n2+" ");
+                    //Console.WriteLine(n3+" ");
+                    dataf+=n3;
+                    n1=n2;
+                    n2=n3;
+                }
                 // Show the data on the console.  
-                Console.WriteLine( "The Square Of Received Number : {0}", dataf);  
+                Console.WriteLine( "The Factorial Of Received Number : {0}", dataFact);  
+                Console.WriteLine("The Sum Of Fibonacci Series less than "+dataFact+" Is: {0}", dataf);
                 // Echo the data back to the client.  
-                byte[] msg = Encoding.ASCII.GetBytes(dataf.ToString());  
-                handler.Send(msg);  
+
+                byte[] msg = Encoding.ASCII.GetBytes(errorCode.ToString()+","+dataFact.ToString()+","+dataf.ToString());
+                Console.WriteLine(msg);
+                handler.Send(msg);                  
                 handler.Shutdown(SocketShutdown.Both);  
                 handler.Close();  
                 }
                 else
                 {
-                    Console.WriteLine(dataStr);
-                    byte[] msg = Encoding.ASCII.GetBytes(dataStr); 
+                    string errorCode="{Code:2 Only Numbers Are Accepted}";
+                    Console.WriteLine(errorCode);
+                    byte[] msg = Encoding.ASCII.GetBytes(errorCode);
                     handler.Send(msg);
                     handler.Shutdown(SocketShutdown.Both);
                     handler.Close();  
@@ -70,7 +104,8 @@ public class SynchronousSocketListener {
             }  
   
         } catch (Exception e) {  
-            Console.WriteLine(e.ToString());  
+            Console.WriteLine(e.ToString());
+             
         }  
   
         Console.WriteLine("\nPress ENTER to continue...");  

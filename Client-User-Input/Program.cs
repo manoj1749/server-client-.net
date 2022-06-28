@@ -49,7 +49,6 @@ public class SynchronousSocketClient
                 // Release the socket.  
                 sender.Shutdown(SocketShutdown.Both);
                 sender.Close();
-
             }
             catch (ArgumentNullException ane)
             {

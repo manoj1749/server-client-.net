@@ -50,17 +50,29 @@ public class SynchronousSocketClient
                 int bytesSent2 = sender.Send(msg2);
                 // Receive the response from the remote device.  
                 int bytesRec = sender.Receive(bytes);
-                Console.WriteLine("The Square root of "+userInput+" : {0}",
-                    Encoding.ASCII.GetString(bytes, 0, bytesRec));
+                //int bytesRec2 = sender.Receive(bytes);
+                //onsole.WriteLine(bytesRec2);
+                string serverData = Encoding.ASCII.GetString(bytes, 0, bytesRec);
+                string[] serverList = serverData.Split(",");
+                Console.WriteLine(serverList[0]);
+                Console.WriteLine("The factorial of "+userInput+" : {0}",
+                    serverList[1]);
+                Console.WriteLine("The Sum Of Fibonacci Series less than "+serverList[1]+" : {0}",
+                    serverList[2]);
+                //Console.WriteLine("The sum of Fibonacci series less than : {0}",
+                //    Encoding.ASCII.GetString(bytes, 0, bytesRec2));
                 // Release the socket.  
                 sender.Shutdown(SocketShutdown.Both);
                 sender.Close();
                 }
                 else
                 {
-                    Console.WriteLine("Only Numebrs Are Accepted");
+                    //Console.WriteLine("Only Numbers Are Accepted");
                     byte[] msg = Encoding.ASCII.GetBytes("Wrong Input Given<EOF>");
                     int bytesSent = sender.Send(msg);
+                    int bytesRec = sender.Receive(bytes);
+                    string serverData = Encoding.ASCII.GetString(bytes, 0, bytesRec);
+                    Console.WriteLine(serverData);
                     sender.Shutdown(SocketShutdown.Both);
                     sender.Close();
                 }
