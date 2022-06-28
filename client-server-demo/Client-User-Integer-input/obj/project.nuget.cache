@@ -1,0 +1,10 @@
+{
+  "version": 2,
+  "dgSpecHash": "o7UrXoNmW7Bb79t3/SyZjwRD3yzMRHw/yfnfI/fgOyJZ8p8sG3MLN4xMQsJYL9QAtgD8nIY0UlH8HphmdO3uuw==",
+  "success": true,
+  "projectFilePath": "/Users/manoj/Documents/Github/server-client-.net/client-server-demo/Client-User-Integer-input/Client.csproj",
+  "expectedPackageFiles": [
+    "/Users/manoj/.nuget/packages/newtonsoft.json/13.0.1/newtonsoft.json.13.0.1.nupkg.sha512"
+  ],
+  "logs": []
+}
