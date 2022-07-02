@@ -77,18 +77,9 @@ public class SynchronousSocketListener
                         Console.WriteLine(errorCode);
                         byte[] msg = Encoding.ASCII.GetBytes(errorCode);
                         handler.Send(msg);
-                        handler.Shutdown(SocketShutdown.Both);
-                        handler.Close();
+                        //handler.Shutdown(SocketShutdown.Both);
+                        //handler.Close();
                     }
-                    Console.WriteLine("hi");                    
-                    int bytesRec1 = handler.Receive(bytes);
-                    Console.WriteLine("test1");  
-                    string dataStr1 = Encoding.ASCII.GetString(bytes, 0, bytesRec1);
-                    Console.WriteLine("test2");  
-                    Console.WriteLine(dataStr1);
-                    Console.WriteLine("test3");  
-                    handler.Shutdown(SocketShutdown.Both);
-                    handler.Close();
                 }
                 else
                 {
@@ -96,8 +87,29 @@ public class SynchronousSocketListener
                     Console.WriteLine(errorCode);
                     byte[] msg = Encoding.ASCII.GetBytes(errorCode);
                     handler.Send(msg);
-                    handler.Shutdown(SocketShutdown.Both);
-                    handler.Close();
+                    //handler.Shutdown(SocketShutdown.Both);
+                    //handler.Close();
+                }
+                int bytesRec1 = handler.Receive(bytes);
+                string dataStr1 = Encoding.ASCII.GetString(bytes, 0, bytesRec1);
+                Console.WriteLine("Code: " + dataStr1);
+                if (dataStr1=="0-a")
+                {
+                    Console.WriteLine("Input Is Out Of Range");
+                    //handler.Shutdown(SocketShutdown.Both);
+                    //handler.Close();
+                }
+                else if (dataStr1=="0-b")
+                {
+                    Console.WriteLine("Only Numbers Are Accepted");
+                    //handler.Shutdown(SocketShutdown.Both);
+                    //handler.Close();
+                }
+                else if (dataStr1=="1")
+                {
+                    Console.WriteLine("Only Numbers Are Accepted");
+                    //handler.Shutdown(SocketShutdown.Both);
+                    //handler.Close();
                 }
             }
 

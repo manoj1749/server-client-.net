@@ -75,20 +75,25 @@ public class SynchronousSocketClient
                             errReply = "1";
                             msg3 = Encoding.ASCII.GetBytes(errReply);
                             bytesSent3 = sender.Send(msg3);
+                            Console.WriteLine(errReply);
                             break;
                         }
                     case "0:1":
                         {
-                            errReply = "0";
-                            msg3 = Encoding.ASCII.GetBytes(errReply);
+                            //Console.WriteLine("Input Is Out Of Range");
+                            errReply = "0-a";
+                            /*msg3 = Encoding.ASCII.GetBytes(errReply);
                             bytesSent3 = sender.Send(msg3);
+                            Console.WriteLine("Code: "+errReply);
+                            Console.WriteLine("Input Is Out Of Range");*/
                             break;
                         }
                     case "0:2":
                         {
-                            errReply = "0";
-                            msg3 = Encoding.ASCII.GetBytes(errReply);
+                            errReply = "0-b";
+                            /*msg3 = Encoding.ASCII.GetBytes(errReply);
                             bytesSent3 = sender.Send(msg3);
+                            Console.WriteLine("Code: "+errReply);*/
                             break;
                         }
                 }
