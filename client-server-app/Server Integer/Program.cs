@@ -7,6 +7,7 @@ public class SynchronousSocketListener
 {
     // Incoming data from the client.  
     public static string data = null;
+    public static int dataInt,x;
 
     public static void StartListening()
     {
@@ -55,16 +56,17 @@ public class SynchronousSocketListener
                 //string operation = dataList[0];
                 //Console.WriteLine(operation);
                 bool isNumeric = int.TryParse(dataStr, out _);
+            
                 if (isNumeric)
                 {
 
                     string errorCode = "";
-                    int dataInt = Int32.Parse(dataStr);
+                    dataInt = Int32.Parse(dataStr);
                     Console.WriteLine(dataInt);
                     if (dataInt >= 0 & dataInt < 13)
                     {
                         errorCode = "0:0";
-                        Console.WriteLine("Code: "+errorCode+" Valid Input");
+                        Console.WriteLine("Code: " + errorCode + " Valid Input");
                         byte[] msg = Encoding.ASCII.GetBytes(errorCode);
 
                         handler.Send(msg);
@@ -74,7 +76,7 @@ public class SynchronousSocketListener
                     else
                     {
                         errorCode = "0:1";
-                        Console.WriteLine("Code: "+errorCode+" Input Is Out Of Range");
+                        Console.WriteLine("Code: " + errorCode + " Input Is Out Of Range");
                         byte[] msg = Encoding.ASCII.GetBytes(errorCode);
                         handler.Send(msg);
                         //handler.Shutdown(SocketShutdown.Both);
@@ -84,7 +86,7 @@ public class SynchronousSocketListener
                 else
                 {
                     string errorCode = "0:2";
-                    Console.WriteLine("Code: "+errorCode+" Invalid Input");
+                    Console.WriteLine("Code: " + errorCode + " Invalid Input");
                     byte[] msg = Encoding.ASCII.GetBytes(errorCode);
                     handler.Send(msg);
                     //handler.Shutdown(SocketShutdown.Both);
@@ -94,16 +96,20 @@ public class SynchronousSocketListener
                 string dataStr1 = Encoding.ASCII.GetString(bytes, 0, bytesRec1);
                 Console.WriteLine(dataStr1);
                 int trueF = 1;
-                /*while (trueF==1)
+                x = dataInt;
+                while (trueF==1)
                 {
                     switch (dataStr1)
                     {
-                        //case "1":
+                        case "1":
                         {
-                            
+                           x = fibonacci(dataInt);
+                           Console.WriteLine(x);
+                           dataInt=x;
+                           break;
                         }
                     }
-                }*/
+                }
             }
 
         }
@@ -117,6 +123,52 @@ public class SynchronousSocketListener
         Console.Read();
 
     }
+
+    public static int fibonacci(int num)
+    {
+
+        if (num == 0)
+        {
+            Console.Write(0);
+            return 0;
+        }
+
+        // Initialize the first & second
+        // terms of the Fibonacci series
+        int first = 0, second = 1;
+
+        // Store the third term
+        int third = first + second;
+
+        // Iterate until the third term
+        // is less than or equal to num
+        while (third <= num)
+        {
+
+            // Update the first
+            first = second;
+
+            // Update the second
+            second = third;
+
+            // Update the third
+            third = first + second;
+        }
+
+        // Store the Fibonacci number
+        // having smaller difference with N
+        int ans = (Math.Abs(third - num) >=
+                Math.Abs(second - num)) ?
+                        second : third;
+
+        // Print the result
+        Console.WriteLine(ans);
+        return ans;
+    }
+
+    // This code is contributed by sanjoy_62
+
+
 
     public static int Main(String[] args)
     {
