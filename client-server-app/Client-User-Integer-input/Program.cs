@@ -42,21 +42,21 @@ public class SynchronousSocketClient
                 //if (isNumeric)
                 //{
                 //int dataInt = Int32.Parse(userInput);
-                string[] userList = userInput.Split(" ");
+                /*string[] userList = userInput.Split(" ");
                 Console.WriteLine(userList[0]);
                 if (userList[0] == "0")
                     Console.WriteLine("Only Factorial Is Needed");
                 else if (userList[1] == "1")
                     Console.WriteLine("Only Fibonocci Is Needed");
                 else if (userList[1] == "2")
-                    Console.WriteLine("Both Factorial And Fibonacci Of Factorial Is Needed");
-                //Console.WriteLine("The Number You Entered Is : " + userList[1]);
+                    Console.WriteLine("Both Factorial And Fibonacci Of Factorial Is Needed");*/
+                Console.WriteLine("The Number You Entered Is : " + userInput);
                 Console.WriteLine("=======================================");
-                byte[] msg1 = Encoding.ASCII.GetBytes(userInput);
+                byte[] msg = Encoding.ASCII.GetBytes(userInput + "<EOF>");
                 // Send the data through the socket.  
-                byte[] msg2 = Encoding.ASCII.GetBytes("<EOF>");
-                int bytesSent1 = sender.Send(msg1);
-                int bytesSent2 = sender.Send(msg2);
+                //byte[] msg2 = Encoding.ASCII.GetBytes("<EOF>");
+                int bytesSent1 = sender.Send(msg);
+                //int bytesSent2 = sender.Send(msg2);
                 // Receive the response from the remote device.
                 int bytesRec = sender.Receive(bytes);
                 //int bytesRec2 = sender.Receive(bytes);
@@ -64,36 +64,58 @@ public class SynchronousSocketClient
                 string serverErData1 = Encoding.ASCII.GetString(bytes, 0, bytesRec);
                 //string[] serverList = serverData.Split(",");
                 Console.WriteLine(serverErData1);
-                //string errReply;
-                string errReply;
                 byte[] msg3;
                 int bytesSent3;
+                //int t = 1;
                 switch (serverErData1)
                 {
                     case "0:0":
                         {
-                            errReply = "1";
-                            msg3 = Encoding.ASCII.GetBytes(errReply);
+                            /*msg3 = Encoding.ASCII.GetBytes(errReply);
+                            bytesSent3 = sender.Send(msg3);*/
+                            Console.WriteLine("Code: " + serverErData1);
+                            Console.WriteLine("Valid Input");
+
+                            Console.WriteLine("Enter the operation you want to do on the number");
+                            Console.WriteLine("1:Factorial");
+                            Console.WriteLine("2:Fibonocci");
+                            string operation = Console.ReadLine();
+                            msg3 = Encoding.ASCII.GetBytes(operation);
                             bytesSent3 = sender.Send(msg3);
-                            Console.WriteLine(errReply);
+                            if (operation == "1")
+                            {
+                                Console.WriteLine("Factorial Will Be Found");
+                                //t = 0;
+                            }
+                            else if (operation == "2")
+                            {
+                                Console.WriteLine("Fibonocci Will Be Found");
+                                //t = 0;
+                            }
+                            /*else
+                            {
+                                Console.WriteLine("Enter The Number Corresponding To The Operation Shown");
+                            }*/
                             break;
                         }
                     case "0:1":
                         {
                             //Console.WriteLine("Input Is Out Of Range");
-                            errReply = "0-a";
                             /*msg3 = Encoding.ASCII.GetBytes(errReply);
-                            bytesSent3 = sender.Send(msg3);
-                            Console.WriteLine("Code: "+errReply);
-                            Console.WriteLine("Input Is Out Of Range");*/
+                            bytesSent3 = sender.Send(msg3);*/
+                            Console.WriteLine("Code: " + serverErData1);
+                            Console.WriteLine("Input Is Out Of Range");
+                            //StartClient();
                             break;
                         }
                     case "0:2":
                         {
-                            errReply = "0-b";
+
                             /*msg3 = Encoding.ASCII.GetBytes(errReply);
-                            bytesSent3 = sender.Send(msg3);
-                            Console.WriteLine("Code: "+errReply);*/
+                            bytesSent3 = sender.Send(msg3);*/
+                            Console.WriteLine("Code: " + serverErData1);
+                            Console.WriteLine("Invalid Input Datatype");
+                            //StartClient();
                             break;
                         }
                 }
@@ -109,6 +131,7 @@ public class SynchronousSocketClient
                 // Release the socket.  
                 sender.Shutdown(SocketShutdown.Both);
                 sender.Close();
+                Console.WriteLine("Test");
                 //}
                 //else
                 //{

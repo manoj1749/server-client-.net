@@ -5,7 +5,6 @@ using System.Text;
 
 public class SynchronousSocketListener
 {
-
     // Incoming data from the client.  
     public static string data = null;
 
@@ -52,21 +51,22 @@ public class SynchronousSocketListener
                 }
                 //Console.WriteLine("{0}", data); 
                 string dataStr = data.Substring(0, data.Length - 5);
-                string[] dataList = dataStr.Split(" ");
-                string operation = dataList[0];
-                Console.WriteLine(operation);
-                bool isNumeric = int.TryParse(dataList[1], out _);
+                //string[] dataList = dataStr.Split(" ");
+                //string operation = dataList[0];
+                //Console.WriteLine(operation);
+                bool isNumeric = int.TryParse(dataStr, out _);
                 if (isNumeric)
                 {
 
                     string errorCode = "";
-                    int dataInt = Int32.Parse(dataList[1]);
+                    int dataInt = Int32.Parse(dataStr);
                     Console.WriteLine(dataInt);
                     if (dataInt >= 0 & dataInt < 13)
                     {
                         errorCode = "0:0";
-                        Console.WriteLine(errorCode);
+                        Console.WriteLine("Code: "+errorCode+" Valid Input");
                         byte[] msg = Encoding.ASCII.GetBytes(errorCode);
+
                         handler.Send(msg);
                         //handler.Shutdown(SocketShutdown.Both);
                         //handler.Close();
@@ -74,7 +74,7 @@ public class SynchronousSocketListener
                     else
                     {
                         errorCode = "0:1";
-                        Console.WriteLine(errorCode);
+                        Console.WriteLine("Code: "+errorCode+" Input Is Out Of Range");
                         byte[] msg = Encoding.ASCII.GetBytes(errorCode);
                         handler.Send(msg);
                         //handler.Shutdown(SocketShutdown.Both);
@@ -84,7 +84,7 @@ public class SynchronousSocketListener
                 else
                 {
                     string errorCode = "0:2";
-                    Console.WriteLine(errorCode);
+                    Console.WriteLine("Code: "+errorCode+" Invalid Input");
                     byte[] msg = Encoding.ASCII.GetBytes(errorCode);
                     handler.Send(msg);
                     //handler.Shutdown(SocketShutdown.Both);
@@ -92,25 +92,18 @@ public class SynchronousSocketListener
                 }
                 int bytesRec1 = handler.Receive(bytes);
                 string dataStr1 = Encoding.ASCII.GetString(bytes, 0, bytesRec1);
-                Console.WriteLine("Code: " + dataStr1);
-                if (dataStr1=="0-a")
+                Console.WriteLine(dataStr1);
+                int trueF = 1;
+                /*while (trueF==1)
                 {
-                    Console.WriteLine("Input Is Out Of Range");
-                    //handler.Shutdown(SocketShutdown.Both);
-                    //handler.Close();
-                }
-                else if (dataStr1=="0-b")
-                {
-                    Console.WriteLine("Only Numbers Are Accepted");
-                    //handler.Shutdown(SocketShutdown.Both);
-                    //handler.Close();
-                }
-                else if (dataStr1=="1")
-                {
-                    Console.WriteLine("Only Numbers Are Accepted");
-                    //handler.Shutdown(SocketShutdown.Both);
-                    //handler.Close();
-                }
+                    switch (dataStr1)
+                    {
+                        //case "1":
+                        {
+                            
+                        }
+                    }
+                }*/
             }
 
         }
