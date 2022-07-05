@@ -105,7 +105,9 @@ public class SynchronousSocketClient
                             bytesSent3 = sender.Send(msg3);*/
                             Console.WriteLine("Code: " + serverErData1);
                             Console.WriteLine("Input Is Out Of Range");
-                            //StartClient();
+                            sender.Shutdown(SocketShutdown.Both);
+                            sender.Close();
+                            StartClient();
                             break;
                         }
                     case "0:2":

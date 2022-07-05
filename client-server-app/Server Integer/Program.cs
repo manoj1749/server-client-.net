@@ -101,13 +101,22 @@ public class SynchronousSocketListener
                 {
                     switch (dataStr1)
                     {
-                        case "1":
+                        /*case "1":
+                        {
+                           x = factorial(dataInt);
+                           Console.WriteLine(x);
+                           dataInt=x;
+                           break;
+                        }*/
+                        case "2":
                         {
                            x = fibonacci(dataInt);
                            Console.WriteLine(x);
                            dataInt=x;
+                           trueF=0;
                            break;
                         }
+                        
                     }
                 }
             }
@@ -116,7 +125,6 @@ public class SynchronousSocketListener
         catch (Exception e)
         {
             Console.WriteLine(e.ToString());
-
         }
 
         Console.WriteLine("\nPress ENTER to continue...");
@@ -166,9 +174,15 @@ public class SynchronousSocketListener
         return ans;
     }
 
-    // This code is contributed by sanjoy_62
+    public static int factorial(int num)
+    {
 
-
+    
+        if (num == 0)
+            return 1;
+ 
+        return num * factorial(num - 1);
+    }
 
     public static int Main(String[] args)
     {
