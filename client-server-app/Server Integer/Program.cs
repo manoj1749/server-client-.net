@@ -7,7 +7,7 @@ public class SynchronousSocketListener
 {
     // Incoming data from the client.  
     public static string data = null;
-    public static int dataInt,x;
+    public static int dataInt, x;
 
     public static void StartListening()
     {
@@ -56,7 +56,7 @@ public class SynchronousSocketListener
                 //string operation = dataList[0];
                 //Console.WriteLine(operation);
                 bool isNumeric = int.TryParse(dataStr, out _);
-            
+
                 if (isNumeric)
                 {
 
@@ -97,26 +97,30 @@ public class SynchronousSocketListener
                 Console.WriteLine(dataStr1);
                 int trueF = 1;
                 x = dataInt;
-                while (trueF==1)
+                while (trueF == 1)
                 {
                     switch (dataStr1)
                     {
-                        /*case "1":
-                        {
-                           x = factorial(dataInt);
-                           Console.WriteLine(x);
-                           dataInt=x;
-                           break;
-                        }*/
+                        case "1":
+                            {
+                                x = factorial(dataInt);
+                                Console.WriteLine(x);
+                                dataInt = x;
+                                byte[] msg = Encoding.ASCII.GetBytes("next");
+                                handler.Send(msg);
+                                trueF = 0;
+                                break;
+                            }
                         case "2":
-                        {
-                           x = fibonacci(dataInt);
-                           Console.WriteLine(x);
-                           dataInt=x;
-                           trueF=0;
-                           break;
-                        }
-                        
+                            {
+                                x = fibonacci(dataInt);
+                                Console.WriteLine(x);
+                                dataInt = x;
+                                byte[] msg = Encoding.ASCII.GetBytes("next");
+                                handler.Send(msg);
+                                trueF = 0;
+                                break;
+                            }
                     }
                 }
             }
@@ -126,7 +130,6 @@ public class SynchronousSocketListener
         {
             Console.WriteLine(e.ToString());
         }
-
         Console.WriteLine("\nPress ENTER to continue...");
         Console.Read();
 
@@ -134,53 +137,21 @@ public class SynchronousSocketListener
 
     public static int fibonacci(int num)
     {
-
-        if (num == 0)
+        if (num <= 1)
         {
-            Console.Write(0);
-            return 0;
+            return num;
         }
-
-        // Initialize the first & second
-        // terms of the Fibonacci series
-        int first = 0, second = 1;
-
-        // Store the third term
-        int third = first + second;
-
-        // Iterate until the third term
-        // is less than or equal to num
-        while (third <= num)
+        else
         {
-
-            // Update the first
-            first = second;
-
-            // Update the second
-            second = third;
-
-            // Update the third
-            third = first + second;
+            return fibonacci(num - 1) + fibonacci(num - 2);
         }
-
-        // Store the Fibonacci number
-        // having smaller difference with N
-        int ans = (Math.Abs(third - num) >=
-                Math.Abs(second - num)) ?
-                        second : third;
-
-        // Print the result
-        Console.WriteLine(ans);
-        return ans;
     }
 
     public static int factorial(int num)
     {
-
-    
         if (num == 0)
             return 1;
- 
+
         return num * factorial(num - 1);
     }
 

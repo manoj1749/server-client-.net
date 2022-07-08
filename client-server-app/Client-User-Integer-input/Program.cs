@@ -66,6 +66,7 @@ public class SynchronousSocketClient
                 Console.WriteLine(serverErData1);
                 byte[] msg3;
                 int bytesSent3;
+                string x;
                 //int t = 1;
                 switch (serverErData1)
                 {
@@ -75,23 +76,9 @@ public class SynchronousSocketClient
                             bytesSent3 = sender.Send(msg3);*/
                             Console.WriteLine("Code: " + serverErData1);
                             Console.WriteLine("Valid Input");
-
-                            Console.WriteLine("Enter the operation you want to do on the number");
-                            Console.WriteLine("1:Factorial");
-                            Console.WriteLine("2:Fibonocci");
-                            string operation = Console.ReadLine();
-                            msg3 = Encoding.ASCII.GetBytes(operation);
+                            x = Operation();
+                            msg3 = Encoding.ASCII.GetBytes(x);
                             bytesSent3 = sender.Send(msg3);
-                            if (operation == "1")
-                            {
-                                Console.WriteLine("Factorial Will Be Found");
-                                //t = 0;
-                            }
-                            else if (operation == "2")
-                            {
-                                Console.WriteLine("Fibonocci Will Be Found");
-                                //t = 0;
-                            }
                             /*else
                             {
                                 Console.WriteLine("Enter The Number Corresponding To The Operation Shown");
@@ -105,9 +92,6 @@ public class SynchronousSocketClient
                             bytesSent3 = sender.Send(msg3);*/
                             Console.WriteLine("Code: " + serverErData1);
                             Console.WriteLine("Input Is Out Of Range");
-                            sender.Shutdown(SocketShutdown.Both);
-                            sender.Close();
-                            StartClient();
                             break;
                         }
                     case "0:2":
@@ -133,7 +117,7 @@ public class SynchronousSocketClient
                 // Release the socket.  
                 sender.Shutdown(SocketShutdown.Both);
                 sender.Close();
-                Console.WriteLine("Test");
+                //Console.WriteLine("Test");
                 //}
                 //else
                 //{
@@ -167,6 +151,24 @@ public class SynchronousSocketClient
         }
     }
 
+    public static string Operation()
+    {
+        Console.WriteLine("Enter the operation you want to do on the number");
+        Console.WriteLine("1:Factorial");
+        Console.WriteLine("2:Fibonocci");
+        string operation = Console.ReadLine();
+        if (operation == "1")
+        {
+            Console.WriteLine("Factorial Will Be Found");
+            //t = 0;
+        }
+        else if (operation == "2")
+        {
+            Console.WriteLine("Fibonocci Will Be Found");
+            //t = 0;
+        }
+        return operation;
+    }
     public static int Main(String[] args)
     {
         StartClient();
