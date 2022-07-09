@@ -79,6 +79,23 @@ public class SynchronousSocketClient
                             x = Operation();
                             msg3 = Encoding.ASCII.GetBytes(x);
                             bytesSent3 = sender.Send(msg3);
+                            int bytesRec1 = sender.Receive(bytes);
+                            string dataRec = Encoding.ASCII.GetString(bytes, 0, bytesRec1);
+                            Console.WriteLine(dataRec);
+                            Console.WriteLine("Do You Want To Do Some More Operations On This Number?");
+                            Console.WriteLine("1:Yes");
+                            Console.WriteLine("2:No");
+                            int response = Console.Read();
+                            if (response == 1)
+                            {
+                                x = Operation();
+                            }
+                            else if (response == 2)
+                            {
+                                Console.WriteLine("Sure!!!");
+                                sender.Shutdown(SocketShutdown.Both);
+                                sender.Close();
+                            }
                             /*else
                             {
                                 Console.WriteLine("Enter The Number Corresponding To The Operation Shown");
@@ -160,6 +177,8 @@ public class SynchronousSocketClient
         if (operation == "1")
         {
             Console.WriteLine("Factorial Will Be Found");
+            Console.WriteLine("=======================================");
+            Console.Write("");
             //t = 0;
         }
         else if (operation == "2")

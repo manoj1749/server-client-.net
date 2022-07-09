@@ -97,26 +97,27 @@ public class SynchronousSocketListener
                 Console.WriteLine(dataStr1);
                 int trueF = 1;
                 x = dataInt;
+                int x1;
                 while (trueF == 1)
                 {
                     switch (dataStr1)
                     {
                         case "1":
                             {
-                                x = factorial(dataInt);
-                                Console.WriteLine(x);
-                                dataInt = x;
-                                byte[] msg = Encoding.ASCII.GetBytes("next");
+                                x1 = factorial(dataInt);
+                                Console.WriteLine(x1);
+                                dataInt = x1;
+                                byte[] msg = Encoding.ASCII.GetBytes(x1.ToString());
                                 handler.Send(msg);
-                                trueF = 0;
+                                //trueF = 0;
                                 break;
                             }
                         case "2":
                             {
-                                x = fibonacci(dataInt);
-                                Console.WriteLine(x);
-                                dataInt = x;
-                                byte[] msg = Encoding.ASCII.GetBytes("next");
+                                x1 = fibonacci(dataInt);
+                                Console.WriteLine(x1);
+                                dataInt = x1;
+                                byte[] msg = Encoding.ASCII.GetBytes(x1.ToString());
                                 handler.Send(msg);
                                 trueF = 0;
                                 break;
@@ -151,7 +152,6 @@ public class SynchronousSocketListener
     {
         if (num == 0)
             return 1;
-
         return num * factorial(num - 1);
     }
 
